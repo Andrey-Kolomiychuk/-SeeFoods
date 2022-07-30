@@ -4,6 +4,7 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
 a {
   color: inherit;
   text-decoration: none;
@@ -34,7 +35,17 @@ body {
 }
 
 .phone {
+  transition: 0.4s;
   margin-right: 43px;
+  animation-name: phone;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate-reverse;
+}
+
+.phone:hover {
+  animation-play-state: paused;
 }
 
 .menu__list {
@@ -501,6 +512,190 @@ body {
   cursor: pointer;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.order {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: transparent;
+  z-index: 11;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+}
+
+.order.order-active {
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  visibility: visible;
+}
+
+.order__body.order-active {
+  transform: translatey(0%) scale(1);
+}
+
+.order__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+
+.order__body {
+  transform: translatey(-100%) scale(0);
+  position: relative;
+  width: 90%;
+  height: 90%;
+  background-color: #fff;
+  transition: 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 4px 4px 8px 0 rgba(255, 255, 255, 0.5);
+  flex-wrap: wrap;
+}
+
+.order__cross {
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.order__left-side {
+  min-width: 50%;  
+  height: 80%; 
+  position: relative;
+  display: flex;
+  flex-direction: column; 
+}
+
+.order__left-side::before {
+  content: ""; 
+  position: absolute; 
+  height: 70%; 
+  width: 2px; 
+  background: #afafb6;
+  right: -5.5%; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.order__letf-box:first-child{
+  padding-top: 30px;
+}
+
+.order__letf-box{
+  padding-left: 30%;
+  width: 100%;
+}
+
+.order__text{
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.order__letf-box + .order__letf-box{
+  margin-top: 30px;
+}
+
+.order__product select,
+.order__count select{
+  width: 100%;  
+  border: none; 
+  border-radius: 5px;  
+  background: #f0f1f8; 
+  padding: 0 20px;
+  height: 50px;
+}
+
+.order__product-box:valid{
+  border-color: aqua;
+}
+
+.order__right-side{
+  min-width: 50%;  
+  height: 80%; 
+}
+
+.order__right-box{
+  padding-top: 30px;
+  padding-left: 10%;
+}
+
+.input-box{
+  height: 50px;
+  width: 100%; 
+  margin-bottom: 20px;
+}
+
+.input-box input{
+  height: 100%; 
+  width: 80%; 
+  border: none;
+  border-radius: 5px; 
+  background: #f0f1f8;
+  padding: 0 20px; 
+}
+
+.order__button-side{
+  transform: translateY(-50px);
+}
+
+.order__button-btn {
+  display: inline-block;
+  color: #001e64;
+  font-family: "Roboto Slab", serif;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 700;
+  padding: 12px 85px;
+  background-color: transparent;
+  border: 1px solid #001e64;
+  border-radius: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.order__button-btn:hover {
+  background-color: #001e64;
+  color: #fff;
+}
+
+.button input{
+  color: #fff;
+  font-size: 18px;
+  background: #001e64;;
+  outline: none;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 7px;
+  transition: 0.2s; 
+  cursor: pointer;
+}
+
+
+
+@keyframes phone {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
 @media screen and (max-width: 1230px) {
   .information__right-column {
     margin-left: 50px;
@@ -592,7 +787,6 @@ body {
     max-height: 272px;
   }
 }
-
 
 @media screen and (max-width: 845px) {
   .seafood {
@@ -702,7 +896,6 @@ body {
 }
 
 @media screen and (max-width: 585px) {
-
   .contacts__box {
     margin-right: 20px;
   }
@@ -817,16 +1010,16 @@ body {
 }
 
 @media screen and (max-width: 445px) {
-  .contacts{
+  .contacts {
     background-image: none;
   }
 
-  .contacts__box{
+  .contacts__box {
     margin: 0;
     width: 100%;
   }
 
-  .footer{
+  .footer {
     padding-bottom: 10px;
   }
 
@@ -834,11 +1027,11 @@ body {
     padding-bottom: 10px;
   }
 
-  .footer-social__list{
+  .footer-social__list {
     margin: 0 auto;
   }
 
-  .logo-footer{
+  .logo-footer {
     display: none;
   }
 }

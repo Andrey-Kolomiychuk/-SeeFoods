@@ -79,8 +79,21 @@ $(function () {
   $(".header__content-link").on("click", function (e) {
     e.preventDefault;
     $(".header__content-link").toggleClass("header__content-link--active");
+
+    const headerLink = document.querySelector('.header__content-link--active').getAttribute('id');
+
+    if (headerLink === "ru"){
+    document.getElementById('order-ru').style.display = '';
+    document.getElementById('order-en').style.display = 'none';
+    } else {
+    document.getElementById('order-en').style.display = '';
+    document.getElementById('order-ru').style.display = 'none';
+    }
+
   });
 });
+
+
 
 document.addEventListener("DOMContentLoaded", getLocalLang);
 
@@ -113,7 +126,7 @@ var arrLang = {
     "third-content-item1": "белок",
     "third-content-item2": "витамин B12",
     "third-content-item3": "селен",
-    "product-сontent-text":
+    "product-content-text":
       "Чтобы поймать коричневых крабов, вам не понадобится больше, чем фонарик и быстрые рефлексы - последнее, что видят коричневые крабы, - это вспышка и стреляющая рука. Но вы должны действовать быстро: через секунду или две краб понимает, что происходит, и использует свои когти, чтобы ущипнуть Вас изо всех сил, и он не отпустит Вас легко. Таким образом, ловля крабов не только обеспечивает вкусную еду, но и вызывает выброс адреналина.",
     benefits1: "Уникальное разнообразие",
     benefits2: "Экологическое потребление",
@@ -144,6 +157,10 @@ var arrLang = {
     "contact-us": "Связаться с нами",
     phone: "Телефон:",
     advice: "Норвежский совет по морепродуктам",
+    'order-btn': 'Оформить заказ',
+    'choose-product': 'Выбирите товар',
+    'choose-count': 'Выбирите колличество',
+    'contat-data': 'Заполните контаные данные',
   },
   en: {
     about: "About Us",
@@ -204,6 +221,10 @@ var arrLang = {
     "contact-us": "Connect with us",
     phone: "Telephone:",
     advice: "Norwegian Seafood Council",
+    'order-btn': 'Checkout',
+    'choose-product': 'Choose a product',
+    'choose-count': 'Select Quantity',
+    'contat-data': 'Fill in contact details',
   },
 };
 
@@ -263,3 +284,39 @@ function getLocalLang() {
     })
   }, 0);
 }
+
+const orderOpen = document.querySelector('.order__open');
+const orderClose = document.querySelector('.order__close');
+const orderMenu = document.querySelector('.order');
+const orderBody = document.querySelector('.order__body');
+let html = document.documentElement;
+
+document.onclick = function (e) {
+  if (e.target.classList.contains('order__container')){
+    if (!e.target.classList.contains('order__body')) {
+      orderMenu.classList.remove('order-active')
+      orderBody.classList.remove('order-active')
+      html.classList.remove("overflow-hidden")
+    }};
+};
+
+orderOpen.addEventListener('click', function(e){
+  e.preventDefault();
+  orderMenu.classList.add('order-active')
+  orderBody.classList.add('order-active')
+  html.classList.add("overflow-hidden");
+})
+
+orderClose.addEventListener('click', () =>  {
+  orderMenu.classList.remove('order-active')
+  orderBody.classList.remove('order-active')
+  html.classList.remove("overflow-hidden");
+
+})
+
+
+
+
+
+
+
