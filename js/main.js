@@ -80,20 +80,19 @@ $(function () {
     e.preventDefault;
     $(".header__content-link").toggleClass("header__content-link--active");
 
-    const headerLink = document.querySelector('.header__content-link--active').getAttribute('id');
+    const headerLink = document
+      .querySelector(".header__content-link--active")
+      .getAttribute("id");
 
-    if (headerLink === "ru"){
-    document.getElementById('order-ru').style.display = '';
-    document.getElementById('order-en').style.display = 'none';
+    if (headerLink === "ru") {
+      document.getElementById("order-ru").style.display = "";
+      document.getElementById("order-en").style.display = "none";
     } else {
-    document.getElementById('order-en').style.display = '';
-    document.getElementById('order-ru').style.display = 'none';
+      document.getElementById("order-en").style.display = "";
+      document.getElementById("order-ru").style.display = "none";
     }
-
   });
 });
-
-
 
 document.addEventListener("DOMContentLoaded", getLocalLang);
 
@@ -157,10 +156,10 @@ var arrLang = {
     "contact-us": "Связаться с нами",
     phone: "Телефон:",
     advice: "Норвежский совет по морепродуктам",
-    'order-btn': 'Оформить заказ',
-    'choose-product': 'Выбирите товар',
-    'choose-count': 'Выбирите колличество',
-    'contat-data': 'Заполните контаные данные',
+    "order-btn": "Оформить заказ",
+    "choose-product": "Выбирите товар",
+    "choose-count": "Выбирите колличество",
+    "contat-data": "Заполните контаные данные",
   },
   en: {
     about: "About Us",
@@ -221,10 +220,10 @@ var arrLang = {
     "contact-us": "Connect with us",
     phone: "Telephone:",
     advice: "Norwegian Seafood Council",
-    'order-btn': 'Checkout',
-    'choose-product': 'Choose a product',
-    'choose-count': 'Select Quantity',
-    'contat-data': 'Fill in contact details',
+    "order-btn": "Checkout",
+    "choose-product": "Choose a product",
+    "choose-count": "Select Quantity",
+    "contat-data": "Fill in contact details",
   },
 };
 
@@ -273,6 +272,8 @@ function getLocalLang() {
         document
           .getElementById("en")
           .classList.remove("header__content-link--active");
+        document.getElementById("order-ru").style.display = "";
+        document.getElementById("order-en").style.display = "none";
       } else {
         document
           .getElementById("en")
@@ -280,43 +281,38 @@ function getLocalLang() {
         document
           .getElementById("ru")
           .classList.remove("header__content-link--active");
+        document.getElementById("order-en").style.display = "";
+        document.getElementById("order-ru").style.display = "none";
       }
-    })
+    });
   }, 0);
 }
 
-const orderOpen = document.querySelector('.order__open');
-const orderClose = document.querySelector('.order__close');
-const orderMenu = document.querySelector('.order');
-const orderBody = document.querySelector('.order__body');
+const orderOpen = document.querySelector(".order__open");
+const orderClose = document.querySelector(".order__close");
+const orderMenu = document.querySelector(".order");
+const orderBody = document.querySelector(".order__body");
 let html = document.documentElement;
 
 document.onclick = function (e) {
-  if (e.target.classList.contains('order__container')){
-    if (!e.target.classList.contains('order__body')) {
-      orderMenu.classList.remove('order-active')
-      orderBody.classList.remove('order-active')
-      html.classList.remove("overflow-hidden")
-    }};
+  if (e.target.classList.contains("order__container")) {
+    if (!e.target.classList.contains("order__body")) {
+      orderMenu.classList.remove("order-active");
+      orderBody.classList.remove("order-active");
+      html.classList.remove("overflow-hidden");
+    }
+  }
 };
 
-orderOpen.addEventListener('click', function(e){
+orderOpen.addEventListener("click", function (e) {
   e.preventDefault();
-  orderMenu.classList.add('order-active')
-  orderBody.classList.add('order-active')
+  orderMenu.classList.add("order-active");
+  orderBody.classList.add("order-active");
   html.classList.add("overflow-hidden");
-})
+});
 
-orderClose.addEventListener('click', () =>  {
-  orderMenu.classList.remove('order-active')
-  orderBody.classList.remove('order-active')
+orderClose.addEventListener("click", () => {
+  orderMenu.classList.remove("order-active");
+  orderBody.classList.remove("order-active");
   html.classList.remove("overflow-hidden");
-
-})
-
-
-
-
-
-
-
+});
