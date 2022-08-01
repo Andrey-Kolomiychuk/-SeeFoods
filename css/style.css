@@ -18,6 +18,11 @@ body {
   color: #232323;
 }
 
+input:required,
+select:required{
+  border: 1px solid red;
+}
+
 .container {
   max-width: 1220px;
   padding: 0 10px;
@@ -603,6 +608,7 @@ body {
 .order__text{
   padding-top: 30px;
   padding-bottom: 10px;
+  color:#001e64
 }
 
 .order__letf-box + .order__letf-box{
@@ -617,10 +623,6 @@ body {
   background: #f0f1f8; 
   padding: 0 20px;
   height: 50px;
-}
-
-.order__product-box:valid{
-  border-color: aqua;
 }
 
 .order__right-side{
@@ -892,6 +894,73 @@ body {
 @media (max-width: 686px) {
   .product__name .slick-dots {
     top: 80px;
+  }
+
+  .order__cross {
+    right: 5%;
+    top: 5%;
+    cursor: pointer;
+    z-index: 11;
+  }
+
+  .order__left-side {
+    min-width: 100%;  
+    height: 30%; 
+  }
+
+  .order__letf-box:first-child{
+    padding-top: 0px;
+  }
+
+  .order__letf-box{
+    padding: 0 5%;
+  }
+
+  .order__text{
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  .order__letf-box + .order__letf-box{
+    margin-top: 0px;
+  }
+
+  .order__left-side::before {
+    width: 0px; 
+  }
+
+  .order__product select,
+  .order__count select{
+    height: 30px;
+  }
+
+  .order__right-side{
+    min-width: 100%;  
+    height: 30%; 
+  }
+
+  .order__right-box{
+    padding: 0 5%;
+  }
+
+  .input-box{
+    height: 30px;
+    width: 100%; 
+    margin-bottom: 20px;
+  }
+
+  .input-box input{
+    width: 100%; 
+  }
+
+  .order__button-side{
+    transform: translateY( 15px);
+  }
+
+  .order__button-btn {
+    font-size: 18px;
+    line-height: 19px;
+    padding: 10px 20px;
   }
 }
 

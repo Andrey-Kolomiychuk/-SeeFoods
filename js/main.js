@@ -85,11 +85,25 @@ $(function () {
       .getAttribute("id");
 
     if (headerLink === "ru") {
-      document.getElementById("order-ru").style.display = "";
-      document.getElementById("order-en").style.display = "none";
+      const orderRu = document.querySelectorAll(".order-ru");
+      orderRu.forEach((element) => {
+        element.style.display = "";
+      });
+      const orderEn = document.querySelectorAll(".order-en");
+      orderEn.forEach((element) => {
+        element.style.display = "none";
+      });
+      messege = 'Заказ отпарвлен'
     } else {
-      document.getElementById("order-en").style.display = "";
-      document.getElementById("order-ru").style.display = "none";
+      const orderRu = document.querySelectorAll(".order-ru");
+      orderRu.forEach((element) => {
+        element.style.display = "none";
+      });
+      const orderEn = document.querySelectorAll(".order-en");
+      orderEn.forEach((element) => {
+        element.style.display = "";
+      });
+      messege = 'The order has been sent'
     }
   });
 });
@@ -220,7 +234,7 @@ var arrLang = {
     "contact-us": "Connect with us",
     phone: "Telephone:",
     advice: "Norwegian Seafood Council",
-    "order-btn": "Checkout",
+    "order-btn": "Send an order",
     "choose-product": "Choose a product",
     "choose-count": "Select Quantity",
     "contat-data": "Fill in contact details",
@@ -249,6 +263,8 @@ function saveLocalLang(language) {
   localStorage.setItem("langs", JSON.stringify(langs));
 }
 
+let messege;
+
 function getLocalLang() {
   let langs;
   if (localStorage.getItem("langs") === null) {
@@ -256,6 +272,7 @@ function getLocalLang() {
   } else {
     langs = JSON.parse(localStorage.getItem("langs"));
   }
+
 
   setTimeout(() => {
     langs.forEach(function (language) {
@@ -265,6 +282,7 @@ function getLocalLang() {
       });
       console.log(lang);
 
+
       if (lang === "ru") {
         document
           .getElementById("ru")
@@ -272,8 +290,16 @@ function getLocalLang() {
         document
           .getElementById("en")
           .classList.remove("header__content-link--active");
-        document.getElementById("order-ru").style.display = "";
-        document.getElementById("order-en").style.display = "none";
+          const orderRu = document.querySelectorAll(".order-ru");
+          orderRu.forEach((element) => {
+            element.style.display = "";
+          });
+          const orderEn = document.querySelectorAll(".order-en");
+          orderEn.forEach((element) => {
+            element.style.display = "none";
+          });
+          messege = 'Заказ отпарвлен'
+          
       } else {
         document
           .getElementById("en")
@@ -281,8 +307,15 @@ function getLocalLang() {
         document
           .getElementById("ru")
           .classList.remove("header__content-link--active");
-        document.getElementById("order-en").style.display = "";
-        document.getElementById("order-ru").style.display = "none";
+          const orderRu = document.querySelectorAll(".order-ru");
+          orderRu.forEach((element) => {
+            element.style.display = "none";
+          });
+          const orderEn = document.querySelectorAll(".order-en");
+          orderEn.forEach((element) => {
+            element.style.display = "";
+          });
+          messege = 'The order has been sent'
       }
     });
   }, 0);
@@ -316,3 +349,12 @@ orderClose.addEventListener("click", () => {
   orderBody.classList.remove("order-active");
   html.classList.remove("overflow-hidden");
 });
+
+const buttonOrder = document.querySelector('.order__button-btn')
+      buttonOrder.addEventListener('click', getAlert);
+
+      function getAlert(){
+        alert(messege)
+      }
+
+    

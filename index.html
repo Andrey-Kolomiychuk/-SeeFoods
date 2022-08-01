@@ -526,7 +526,8 @@
           <div class="order__letf-box">
             <p class="order__text lang" key="choose-product">Выбирите товар</p>
             <form class="order__product" action="#">
-              <select сlass="order__product-box" id='order-ru' type="select" />
+              <div class="order-ru">
+              <select сlass="order__product-box" type="select" />
               <option value="Треска">Треска</option>
               <option value="Лосось">Лосось</option>
               <option value="Скумбрия">Скумбрия</option>
@@ -534,7 +535,9 @@
               <option value="Коричневый краб">Коричневый краб</option>
               <option value="Осьминог">Осьминог</option>
               </select>
-              <select сlass="order__product-box" id='order-en'type="select" style='display: none'/>
+            </div>
+            <div class="order-en" style='display: none'>
+              <select сlass="order__product-box" type="select"/>
               <option value="Треска">Сod</option>
               <option value="Лосось">Salmon</option>
               <option value="Скумбрия">Mackerel</option>
@@ -542,6 +545,7 @@
               <option value="Коричневый краб">Brown crab</option>
               <option value="Осьминог">Octopus</option>
               </select>
+            </div>
             </form>
           </div>
           <div class="order__letf-box">
@@ -563,13 +567,16 @@
             <p class="order__text lang" key="contat-data">Заполните контаные данные</p>
             <form action="#">
               <div class="input-box">
-                <input type="text" placeholder="Ваше имя" />
+                <input class='order-ru' type="text" placeholder="Ваше имя"/>
+                <input class='order-en' type="text" id='order-en' placeholder="Name" style='display: none'/>
               </div>
               <div class="input-box">
-                <input type="text" placeholder="Введите email" />
+                <input class='order-ru' type="text" placeholder="Введите email"/>
+                <input class='order-en' type="text" placeholder="Email" style='display: none'/>
               </div>
               <div class="input-box">
-                <input type="text" placeholder="Введите телефон" />
+                <input class='order-ru' type="text"  placeholder="Введите телефон"/>
+                <input class='order-en' type="text"  placeholder="Contact phone" style='display: none'/>
               </div>
             </form>
           </div>
